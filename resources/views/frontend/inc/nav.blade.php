@@ -133,7 +133,7 @@
                     </a>
                 </div>
                 <!-- Search field -->
-                <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white mx-xl-5">
+                {{-- <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white mx-xl-5">
                     <div class="position-relative flex-grow-1 px-3 px-lg-0">
                         <form action="{{ route('search') }}" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
@@ -164,29 +164,29 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Search box -->
-                <div class="d-none d-lg-none ml-3 mr-0">
+                {{-- <div class="d-none d-lg-none ml-3 mr-0">
                     <div class="nav-search-box">
                         <a href="#" class="nav-box-link">
                             <i class="la la-search la-flip-horizontal d-inline-block nav-box-icon"></i>
                         </a>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Compare -->
-                <div class="d-none d-lg-block ml-3 mr-0">
+                {{-- <div class="d-none d-lg-block ml-3 mr-0">
                     <div class="" id="compare">
                         @include('frontend.partials.compare')
                     </div>
-                </div>
+                </div> --}}
                 <!-- Wishlist -->
-                <div class="d-none d-lg-block mr-3" style="margin-left: 36px;">
+                {{-- <div class="d-none d-lg-block mr-3" style="margin-left: 36px;">
                     <div class="" id="wishlist">
                         @include('frontend.partials.wishlist')
                     </div>
-                </div>
+                </div> --}}
                 <!-- Notifications -->
-                <ul class="list-inline mb-0 h-100 d-none d-xl-flex justify-content-end align-items-center">
+                {{-- <ul class="list-inline mb-0 h-100 d-none d-xl-flex justify-content-end align-items-center">
                     <li class="list-inline-item ml-3 mr-3 pr-3 pl-0 dropdown">
                         <a class="dropdown-toggle no-arrow text-secondary fs-12" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                             <span class="">
@@ -242,7 +242,7 @@
                             </div>
                         @endauth
                     </li>
-                </ul>
+                </ul> --}}
 
                 <div class="ml-auto mr-0">
                     @auth
@@ -398,7 +398,7 @@
     </div>
 
     <!-- Menu Bar -->
-    <div class="d-none d-lg-block position-relative bg-primary h-50px">
+    {{-- <div class="d-none d-lg-block position-relative bg-primary h-50px">
         <div class="container h-100">
             <div class="d-flex h-100">
                 <!-- Categoty Menu Button -->
@@ -449,7 +449,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </header>
 
 <!-- Top Menu Sidebar -->
