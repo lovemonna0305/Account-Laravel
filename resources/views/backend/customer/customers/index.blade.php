@@ -86,8 +86,8 @@
                                 </td>
                                 <td>{{single_price($user->balance)}}</td>
                                 <td class="text-right">
-                                    @can('login_as_customer')
-                                        <a href="{{route('customers.login', encrypt($user->id))}}" class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="{{ translate('Log in as this Customer') }}">
+                                    @can('edit_as_customer')
+                                        <a href="{{route('customers.edit', encrypt($user->id))}}" class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="{{ translate('Edit Customer') }}">
                                             <i class="las la-edit"></i>
                                         </a>
                                     @endcan

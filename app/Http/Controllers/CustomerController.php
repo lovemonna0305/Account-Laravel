@@ -155,7 +155,11 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer_id = decrypt($id);
+        $customer = User::find($customer_id);
+        // $address = $customer->addresses;
+        $address = Address::where('user_id', $customer_id)->first();
+        return view('backend.customer.customers.edit', compact('customer', 'address'));
     }
 
     /**
@@ -167,7 +171,23 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer_id = $id;
+        $customer = User::find($customer_id);
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $customer->save();
+
+        $address = Address::where('user_id', $customer_id)->first();
+        $address->user_id = $customer_id;
+        $address->address = $request->address;
+        $address->country_id = $request->country_id;
+        $address->state_id = $request->state_id;
+        $address->city_id = $request->city_id;
+        $address->postal_code = $request->postal_code;
+        $address->phone = $request->phone;
+        $address->save();
+
+        return redirect()->route('customers.index');
     }
 
     /**
