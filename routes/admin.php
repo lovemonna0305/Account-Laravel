@@ -166,6 +166,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::controller(CustomerController::class)->group(function () {
 
         Route::get('customers/create', 'create')->name('add_new_customers.index');
+        Route::get('/customers/edit/{id}', 'edit')->name('customers.edit');
+        Route::post('/customers/update/{id}', 'update')->name('customers.update');
+
         Route::post('customers/register', 'customer_store')->name('customer_register');
 
         Route::get('customers_ban/{customer}', 'ban')->name('customers.ban');
