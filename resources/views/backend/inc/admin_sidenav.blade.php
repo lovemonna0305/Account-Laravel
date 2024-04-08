@@ -463,14 +463,14 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('seller_payment_history')
+                            {{-- @can('seller_payment_history')
                                 <li class="aiz-side-nav-item">
                                     <a href="{{ route('sellers.payment_histories') }}" class="aiz-side-nav-link">
                                         <span class="aiz-side-nav-text">{{ translate('Payouts') }}</span>
                                     </a>
                                 </li>
-                            @endcan
-                            @can('view_seller_payout_requests')
+                            @endcan --}}
+                            {{-- @can('view_seller_payout_requests')
                                 <li class="aiz-side-nav-item">
                                     <a href="{{ route('withdraw_requests_all') }}" class="aiz-side-nav-link">
                                         <span class="aiz-side-nav-text">{{ translate('Payout Requests') }}</span>
@@ -483,7 +483,7 @@
                                         <span class="aiz-side-nav-text">{{ translate('Seller Commission') }}</span>
                                     </a>
                                 </li>
-                            @endcan
+                            @endcan --}}
                             @if (addon_is_activated('seller_subscription'))
                                 @can('view_all_seller_packages')
                                     <li class="aiz-side-nav-item">
@@ -947,7 +947,7 @@
                 @endif
 
                 <!-- Website Setup -->
-                {{-- @canany(['header_setup','footer_setup','view_all_website_pages','website_appearance'])
+                @canany(['header_setup','footer_setup','view_all_website_pages','website_appearance'])
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link {{ areActiveRoutes(['website.footer', 'website.header'])}}" >
                             <i class="las la-desktop aiz-side-nav-icon"></i>
@@ -985,7 +985,7 @@
                             @endcan
                         </ul>
                     </li>
-                @endcanany --}}
+                @endcanany
 
                 <!-- Setup & Configurations -->
                 @canany(['general_settings','features_activation','language_setup','currency_setup','vat_&_tax_setup',
