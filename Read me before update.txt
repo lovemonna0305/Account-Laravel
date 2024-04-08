@@ -1,0 +1,11 @@
+Hello,
+
+If you're already using active ecommerce CMS please follow below Instructions.
+
+-- make sure backup your database from your phpmyadmin.
+-- after update make sure all of your add-on is updated
+
+if you face any issue after update contact us via our support center.
+http://support.activeitzone.com
+
+Thnak you

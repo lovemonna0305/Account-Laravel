@@ -1,0 +1,2471 @@
+{
+	"info": {
+		"_postman_id": "2a7e1799-4fe8-449b-be8d-01f92e172682",
+		"name": "FlutterEcommerceAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Signup a new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"email_or_phone\": \"\",\n\t\"password\": \"\",\n\t\"passowrd_confirmation\": \"\",\n    \"register_by\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/auth/signup",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin an user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"type": "text",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"customer@example.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/auth/login",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout from session",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/auth/logout",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend code (registration)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"type": "text",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_id\": \"\",\n\t\"register_by\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}//auth/resend_code",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"",
+								"auth",
+								"resend_code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm  code (registration)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"type": "text",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_id\": \"\",\n\t\"verification_code\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}//auth/confirm_code",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"",
+								"auth",
+								"confirm_code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password forget request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"type": "text",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email_or_phone\": \"\",\n\t\"send_code_by\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}//auth/password/forget_request",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"",
+								"auth",
+								"password",
+								"forget_request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password reset confirm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"type": "text",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email_or_code\": \"\",\n\t\"verify_by\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}//auth/password/resend_code",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"",
+								"auth",
+								"password",
+								"resend_code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password resend code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"type": "text",
+								"value": "XMLHttpRequest"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"verification_code\": \"\",\n\t\"password\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}//auth/password/confirm_reset",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"",
+								"auth",
+								"password",
+								"confirm_reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by access token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQwMDI2MmJkYmI4YjQ3ZDU3OTU2OGIwYzVmNTZlZjVjNWFjNmJiNmU1MDg5NTg5ZDQ5YTA3ZDM4N2VmNGIxODdmNGYzZTFlNDk2NjgyYzA4In0.eyJhdWQiOiIzIiwianRpIjoiNDAwMjYyYmRiYjhiNDdkNTc5NTY4YjBjNWY1NmVmNWM1YWM2YmI2ZTUwODk1ODlkNDlhMDdkMzg3ZWY0YjE4N2Y0ZjNlMWU0OTY2ODJjMDgiLCJpYXQiOjE2MTY0MjAzMDUsIm5iZiI6MTYxNjQyMDMwNSwiZXhwIjoxNjQ3OTU2MzA1LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.qJxw5C5LJ-fah9_9q3Nd-Os7z7yWw39Qxybv7cPuceBYtlgO-L5zyyd7gi7YG3z0U4IXjzeal__yykFKL5kDZfEzNfpqy44SE0MyIfjEq6wsQCOml6X9a2O7_15BUkN2AbL9r3TXv3a6EWeLhMKE3ENpgyirYBji6gpKBPpyQRRBClD9xDG004QkcAslo7Su4APzq-AtqyiP_nU1T6NPNwKsLpH00TzUJ6e091nzXzxLniK7aL8yum5rifHR5MtnKEUDC-B9Lwj6_X3vzHILHiQLVGunqOnI35NlwnnDO84z5kKL27VyyvlkC_uY5lnPu7F5G7_nlEj9lJq8NbXg-kdXHfehroHsdk28e6Oyrn65jtDtoKW9U17RSUYZ1cEl_XUE05Coxz2iB8HhjCGrzAyY-dh5Ut5rxGQK05__FG9qGO9eL2a2V8M9kSwxoovSTaFZhilzLysMN4PlJObftXt--ez1YEbJXwIV3cBKWkWj5pNpab0CwJiSGxd1G4hCZ1WtESTfV9XOFvwBa_Nldv3oVde1Waw1duuRrw-HCAHlwEWrVCR0nF1rCq68B9LxNE1zaEzcUdVWxuMC6VV5NiHeMrJusI0vjwQZkVoozyQpReX9mJlrNXl9Y_t\"}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/get-user-by-access_token",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"get-user-by-access_token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Brand",
+			"item": [
+				{
+					"name": "Get all brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/brands",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get top brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/brands/top",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"brands",
+								"top"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/categories/top",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"categories",
+								"top"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get featured categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/categories/featured",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"categories",
+								"featured"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get top categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/categories/top",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"categories",
+								"top"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get home categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/home-categories",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"home-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sub categories of category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/sub-categories/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"sub-categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "FlashDeal",
+					"item": [
+						{
+							"name": "Get all flash deals",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/flash-deals",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"flash-deals"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all flash deal products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/flash-deal-products/7",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"flash-deal-products",
+										"7"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all products (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products?page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products of admin (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/admin?page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"admin"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products of seller (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/seller/12?page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"seller",
+								"12"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products of category (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/category/1?page=1&name=",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"1"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products of sub category (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/sub-category/1?page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"sub-category",
+								"1"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products of brand (paginated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/brand/66?page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"brand",
+								"66"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products of todays deal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/todays-deal",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"todays-deal"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all featured products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/featured",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"featured"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get related products of product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/related/102",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"related",
+								"102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get top selling products from seller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/top-from-seller/102",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"top-from-seller",
+								"102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all best selling products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/best-seller",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"best-seller"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all featured products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/featured",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"featured"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get details of product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/206",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"206"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get variant price  of product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/variant/price?id=102&color=F0F8FF&variants=ASDFGH,5433535",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"variant",
+								"price"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "102"
+								},
+								{
+									"key": "color",
+									"value": "F0F8FF"
+								},
+								{
+									"key": "variants",
+									"value": "ASDFGH,5433535"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Searched Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/products/search",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"products",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wishlist",
+			"item": [
+				{
+					"name": "Get wishlist of user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/wishlists/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wishlists",
+								"8"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save to wishlist of user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_id\": \"\",\n\t\"product_id\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/wishlists",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wishlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove from wishlist of user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{auth-token}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseurl}}/wishlists/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wishlists",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check if product is in users wishlist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/wishlists-check-product?product_id=11&user_id=8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wishlists-check-product"
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "11"
+								},
+								{
+									"key": "user_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new add to wishlist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/wishlists-add-product?product_id=11&user_id=8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wishlists-add-product"
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "11"
+								},
+								{
+									"key": "user_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new remove from  wishlist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/wishlists-remove-product?product_id=11&user_id=8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wishlists-remove-product"
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "11"
+								},
+								{
+									"key": "user_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase History",
+			"item": [
+				{
+					"name": "Get purchase history of user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/purchase-history/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"purchase-history",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get purchase history detail of purchase",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{auth-token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/purchase-history-details/1025",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"purchase-history-details",
+								"1025"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get purchase history items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{auth-token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/purchase-history-items/1141",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"purchase-history-items",
+								"1141"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Get all reviews of product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/reviews/product/208",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"reviews",
+								"product",
+								"208"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "submit review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"product_id\":\"208\",\"user_id\":\"8\",\"rating\":\"2\",\"comment\":\"sfdsfdsf\"}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/reviews/submit",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"reviews",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Filter",
+			"item": [
+				{
+					"name": "Filter page brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/filter/brands",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"filter",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter page categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/filter/brands",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"filter",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Get all shops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/shops",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shops"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get shop of user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/shop/user/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shop",
+								"user",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get shop info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/shops/details/11",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shops",
+								"details",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get shop new arrival",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/shops/products/new/11",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shops",
+								"products",
+								"new",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get shop top products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/shops/products/top/11",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shops",
+								"products",
+								"top",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get shop featured products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/shops/products/featured/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shops",
+								"products",
+								"featured",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Balance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/wallet/balance/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wallet",
+								"balance",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Balance List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/wallet/history/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"wallet",
+								"history",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":194,\r\n    \"variant\":\"\",\r\n    \"user_id\":8,\r\n    \"quantity\":3\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/carts/add",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"carts",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/carts/{{user_id}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"carts",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Process",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{auth-token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart_ids\":\"35,36,39,37,40,38\",\r\n    \"cart_quantities\":\"5,4,1,5,1,3\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/carts/process",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"carts",
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/cart-summary/{{user_id}}/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"cart-summary",
+								"{{user_id}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shipping",
+			"item": [
+				{
+					"name": "Shipping cost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"owner_id\":16,\r\n    \"user_id\":8,\r\n    \"city_name\":\"Chittagong\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/shipping_cost",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shipping_cost"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Get user addresses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/user/shipping/address/{{user_id}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								"shipping",
+								"address",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":8,\r\n    \"address\":\"Now or never\",\r\n    \"country\":\"Bangladesh\",\r\n    \"city\":\"Comilla\",\r\n    \"postal_code\":\"64643213456\",\r\n    \"phone\":\"8765461215464\"\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/user/shipping/create",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								"shipping",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete address",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/user/shipping/delete/3",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								"shipping",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/cities",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get countries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/countries",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update address in cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":{{user_id}},\r\n    \"address_id\":13\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/update-address-in-cart",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"update-address-in-cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Get Payment type list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/payment-types",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"payment-types"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "wallet",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order create",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"owner_id\":1,\r\n    \"user_id\":8,\r\n    \"payment_type\": \"stripe\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/order/store",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"order",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stripe screen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/stripe?payment_type=cart_payment&order_id=1147&amount=23.50&user_id={{user_id}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"stripe"
+							],
+							"query": [
+								{
+									"key": "payment_type",
+									"value": "cart_payment"
+								},
+								{
+									"key": "order_id",
+									"value": "1147"
+								},
+								{
+									"key": "amount",
+									"value": "23.50"
+								},
+								{
+									"key": "user_id",
+									"value": "{{user_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ge paypal url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paypal url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "nagad begin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "coupon",
+			"item": [
+				{
+					"name": "coupon apply",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":{{user_id}},\r\n    \"owner_id\":1,\r\n    \"coupon_code\":\"8979824y987\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/coupon-apply",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"coupon-apply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "coupon remove",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":{{user_id}},\r\n    \"owner_id\":1\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/coupon-remove",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"coupon-remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "get counters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/profile/counters/{{user_id}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"profile",
+								"counters",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":{{user_id}},\r\n    \"name\":\"Zero Harman\",\r\n    \"password\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/profile/update",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile image update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":{{user_id}},\r\n    \"filename\":\"crisp.jpg\",\r\n    \"image\":\"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/v+nqDJ402iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iY02iWN/jy9dHXkRir7ey056i+A1YNCCLw3h4wR4KMhIjb32of67zNzmh7uVuLzjoIInP/l3yB3JcqPGm0TGm0TGm0TGg8SNNR/UCZ5GzE0welTipcq1izh8rUniFgkAeoFc8SgQChG/Zpb15gRvQRlIvDHzJ402iY02iYs9r6SRy9e58trNdcozH4H4/C6YaXqvdELe1b7WGE+zwKnRoDb3+YjL/pQ4n377EkzVMJ1gE5CWX0JsB6unvXtXlvoVxp5rj2vMJ+pkz6fiX4w4MnjTaJjTaJet1scF7cc0sNjTVFtFs7F72mgbuMTn1b46ze8+IMNIaTPSFE9sZgND5cek1wJg6ECIWM+639ZdpKgT2JwgPcjCE5xBSIb8U/LaDJ402iY02iYn2CfmpZOQPfw+IVbsfg0iUT7/YjSEAGRFE7icbPsUS10upZcwF1FfoD6KtMCMPNceVQM0B4DLvexqQvCXhaE0TFqt588r/sODJ402iY02iEleQ+Ift8wJTaEXJxfLMr/ei+dK+noN+bjt53P5QaksMir1mx9d9gqFWqpSnvViHEYz+eARYo6mi4L6uy0TGm0TGm0TGm0P6lm2RNG+mx/trutyZmwX4zNUSQZ6KpxizE7p3O72IjNq6O7qKxm48r+vhzer/cGTxptExptExptEsqbmsfpsRIcvXGuuEi7D8VCO9AJuUv6vvLl3obgyeNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomNNomHgAD+//2hDOYvAX9+/X+NGxW2HipWVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjJcY3lPUjEbfwaO9CgofglfJ8UV5PcaVBvqG9ZTr0Shf1f4L7/b7kN9wnxg3nVIxVoB8BDRZVzTDJ3ImfjgiBZ8Ov2SjkuzN6aCVmqdseZwP69dPw7hU1BkVYWvjK86xLh/puoASF7t1hUcbC+C515U6BGxyqfOPSCcCIrNdg15sIa5Pd8J2wALZz8CCYeIzmfA+NvTAh6HxUDGSySSpplMt6Y+/geeMVaR72xT9jTQ0gekov2kaqiTFZiavDWodG905alsOdK8nVxYnCWTXF7qpVumsWSaZfA1vgV8C7uXgNtH8dxgxNQ5fFIizZUsItQuuwn0WKx1BgjJO8dKWuuGsmYfFlnv2lqRvQSCre2qA3r6VkUu1PKr7I6iFLejCXw5dY4/CW72FPb9uPEMTatTlKwUy0dMyQvPELhVfRBM6jn5JsrJjYAG0jNeK8Y0nUfsodHlwiSnWAHCoAB12qXxQA8wam1WqgMzcMEVgBPuHTufg9i9HMHdMDWLqvMuOu/oGIZ/0De2W+OdphcL5aji/5egRYxLUXWOkPewEQqT0MrBRhDihUSKaraaohGL8tMWfVxo4Y6zAidU1/NfIk9CP60TmkQSiRiJtbg6XQBfTSmODqVmKpd7vgM1Xq8JVtq4QFhoJFOjzAVsE+fcpcm/BGCGV41X6ZI5nOM0zCqS5LQW4TKFfLn1o0ZT7wof71xLdmoNxpXD1/jlTdGUIWvw0OKsGU94uQEUWqcsVHxq7EGxGDFCzy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\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/profile/update-image",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"profile",
+								"update-image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delivery boy related",
+			"item": [
+				{
+					"name": "Dashboard summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/{{delivery-boy-prefix}}/deliveries/completed/{{delivery-boy-user-id}}?date_range=\"\"&payment_type=\"\"",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"{{delivery-boy-prefix}}",
+								"deliveries",
+								"completed",
+								"{{delivery-boy-user-id}}"
+							],
+							"query": [
+								{
+									"key": "date_range",
+									"value": "\"\""
+								},
+								{
+									"key": "payment_type",
+									"value": "\"\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "earning or collection summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/{{delivery-boy-prefix}}/earning/{{delivery-boy-user-id}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"{{delivery-boy-prefix}}",
+								"earning",
+								"{{delivery-boy-user-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "earning or collection history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delivery status change",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\":1025,\r\n    \"delivery_boy_id\":{{delivery-boy-user-id}},\r\n    \"status\":\"delivered\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/{{delivery-boy-prefix}}/change-delivery-status",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"{{delivery-boy-prefix}}",
+								"change-delivery-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat",
+			"item": [
+				{
+					"name": "Conversations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/chat/messages/{{user_id}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"chat",
+								"messages",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get all banners",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/banners",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"banners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get business settings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/business-settings",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"business-settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all colors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/colors",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"colors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all currencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/currencies",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"currencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all sliders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/sliders",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"sliders"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get app settings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/settings",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"settings"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth-token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjA2YzFmNTg5ZDRhZWExM2M5NmRlOGJkYTU3N2JjZDMwZjU0MzNlYjg2ZGJjNjYxOWZlZGQ0NGQwNDE3NGM0NjU4NzFhZWUyNmJlOTcyMDg2In0.eyJhdWQiOiIxIiwianRpIjoiMDZjMWY1ODlkNGFlYTEzYzk2ZGU4YmRhNTc3YmNkMzBmNTQzM2ViODZkYmM2NjE5ZmVkZDQ0ZDA0MTc0YzQ2NTg3MWFlZTI2YmU5NzIwODYiLCJpYXQiOjE2MjIxMDIwNDksIm5iZiI6MTYyMjEwMjA0OSwiZXhwIjoxNjUzNjM4MDQ5LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.n9BMDf-QIByUav2pASbpPMUQVqTQMZL1DsikHTjch2dz_QeEaVqfd3KORcqVVaLIbsVd4uUu8hZKgR435_8rba0QZ1ggwyulhv6hoUSGdA7yZcGKRFAqUBZJr8F4s7DVEo3QvnhsqkBz-pxLDUOT4t6t0_67NwYADZ3ASbab3E9kjmXgbEruo0XvmZ78PP8RqGjpf-4D2OBctOw4Jdk_pRjd1LwQv8b2W8I9tONLzMXvHE7EJdIeEBM5LeUd9bBz_cnn8zI02qCnUidGc6LeWyGA0eyvuRUo_nRnhStYHOOjKY0Fb_BzEivIuwNp04ev03aJrfNENh1CGUDrY9n2sALN1fRziLnImwtpVIhXvUSgbDVhJyvmMdvcKvYmNrDLxMxnhsdZ9-uGTNFLU7ViqbwB6oLhnF5rqOKcy9WgOBd3-uVjU3QOsZ_qMndmj5cMP5LYZT74bo4gIBRN_7lYGMzPmvTzjwAuC6UD-O1y_rB8gVVlJkN8cyVs8LvwE_V9vHepAaelxpkLVlwWOTd350RxHO7n0B51rrg3Y8dqS-cdgxA5h1-VRugOuXwRqV7lDKFVm9naOStfMl4o4Dgh8bjb03GzG6W1zJXqtDuUbpOKSOchjpuxfH2NLM2LxUZLH6RkrV9YFAin8N6imZ82GVn9l_GAkZOaMGFvTKSp-_Y"
+		},
+		{
+			"key": "baseurl",
+			"value": "http://localhost/ecommerce_demo_two/api/v2"
+		},
+		{
+			"key": "user_id",
+			"value": "8"
+		},
+		{
+			"key": "delivery-boy-prefix",
+			"value": "delivery-boy"
+		},
+		{
+			"key": "delivery-boy-user-id",
+			"value": "6"
+		}
+	]
+}
