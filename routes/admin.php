@@ -164,6 +164,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     // Customer
     Route::resource('customers', CustomerController::class);
     Route::controller(CustomerController::class)->group(function () {
+
+        Route::get('customers/create', 'create')->name('add_new_customers.index');
+        Route::post('customers/register', 'customer_store')->name('customer_register');
+
         Route::get('customers_ban/{customer}', 'ban')->name('customers.ban');
         Route::get('/customers/login/{id}', 'login')->name('customers.login');
         Route::get('/customers/destroy/{id}', 'destroy')->name('customers.destroy');
@@ -314,6 +318,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::post('/get-product', 'getProduct')->name('get-product');
 
         Route::post('/orders/store', 'new_order_store')->name('orders.store');
+
         
         Route::get('/all_orders', 'all_orders')->name('all_orders.index');
         Route::get('/inhouse-orders', 'all_orders')->name('inhouse_orders.index');

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\User;
+use App\Models\Cart;
+use App\Models\Address;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
@@ -14,6 +18,19 @@ class CustomerController extends Controller
         $this->middleware(['permission:login_as_customer'])->only('login');
         $this->middleware(['permission:ban_customer'])->only('ban');
         $this->middleware(['permission:delete_customer'])->only('destroy');
+    }
+    
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'country_id' => 'required|sometimes|bail|string|max:255',
+            'state_id' => 'required|sometimes|bail|string|max:255',
+            'city_id' => 'required|sometimes|bail|string|max:255',
+            'postal_code' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+        ]);
     }
 
     /**
@@ -40,9 +57,40 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('backend.customer.customers.create');
+    }
+
+    public function customer_store(Request $request)
+    {
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            if(User::where('email', $request->email)->first() != null){
+                flash(translate('Email or Phone already exists.'));
+                return back();
+            }
+        }
+        $this->validator($request->all())->validate();
+
+        $user = User::create([
+            'user_type' => 'customer',
+            'name' => $request->name,
+            'email' => $request->email,
+            'email_verified_at' => date("Y-m-d H:i:s"),
+        ]);
+
+        $address = new Address;
+        $address->user_id = $user->id;
+        $address->address = $request->address;
+        $address->country_id = $request->country_id;
+        $address->state_id = $request->state_id;
+        $address->city_id = $request->city_id;
+        $address->postal_code = $request->postal_code;
+        $address->phone = $request->phone;
+        $address->save();
+
+        return redirect()->route('customers.index');
+
     }
 
     /**
