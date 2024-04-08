@@ -54,7 +54,7 @@
                                         type="button" data-type="minus" data-field="quantity" disabled="">
                                         <i class="las la-minus"></i>
                                     </button>
-                                    <input type="number" name="quantity" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="" min="" max="10" lang="en">
+                                    <input type="number" name="quantity" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="1" min="1" max="10" lang="en">
                                     <button class="btn col-auto btn-icon btn-sm btn-light rounded-0" type="button" data-type="plus" data-field="quantity">
                                         <i class="las la-plus"></i>
                                     </button>
@@ -74,7 +74,7 @@
                             <div class="col-12">
                                 <div class="form-group row">
                                     <div class="col-md-12">
-                                        <select class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select customer') }}" name="customer" required>
+                                        <select class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select customer') }}" name="customer_id" required>
                                             <option value="">{{ translate('Select customer') }}</option>
                                             @foreach (\App\Models\User::where('user_type', 'customer')->get() as $key => $customer_item)
                                                 <option value="{{ $customer_item->id }}">{{ $customer_item->name }}</option>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            {{-- <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('Seller Select')}}</h5>
@@ -97,7 +97,7 @@
                             <div class="col-12">
                                 <div class="form-group row">
                                     <div class="col-md-12">
-                                        <select class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select seller') }}" name="seller" required>
+                                        <select class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select seller') }}" name="seller_id" required>
                                             <option value="">{{ translate('Select seller') }}</option>
                                             @foreach (\App\Models\User::where('user_type', 'seller')->get() as $key => $seller_item)
                                                 <option value="{{ $seller_item->id }}">{{ $seller_item->name }}</option>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="row gutters-5">
             <div class="col-lg-12">
@@ -153,7 +153,7 @@
                             </div>
     
                             <!-- payment status -->
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label class="col-md-3 col-from-label">{{ translate('Payment status')}}</label>
                                 <div class="col-md-8">
                                     <select class="form-control mb-3 aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select your payment status') }}" name="payment_status" required>
@@ -178,7 +178,7 @@
                                         </option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

@@ -57,14 +57,45 @@ class OrderController extends Controller
 
     public function new_order_store(Request $request)
     {
+        $address = Address::where('id', $request->customer_id)->first();
+        $customer = User::find($request->customer_id)->first();
+        
+
+        $shippingAddress = [];
+        if ($address != null) {
+            $shippingAddress['name']        = $customer->name;
+            $shippingAddress['email']       = $customer->email;
+            $shippingAddress['address']     = $address->address;
+            $shippingAddress['country']     = $address->country->name;
+            $shippingAddress['state']       = $address->state->name;
+            $shippingAddress['city']        = $address->city->name;
+            $shippingAddress['postal_code'] = $address->postal_code;
+            $shippingAddress['phone']       = $address->phone;
+            if ($address->latitude || $address->longitude) {
+                $shippingAddress['lat_lang'] = $address->latitude . ',' . $address->longitude;
+            }
+        }
+
+        $combined_order = new CombinedOrder;
+        $combined_order->user_id = $customer->id;
+        $combined_order->shipping_address = '{"name":"Mr. Customer","email":"customer@example.com","address":"Japan","country":"Japan","state":"Aichi","city":"Anjo","postal_code":"1232","phone":"+200205151"}';
+        // $combined_order->shipping_address = json_encode($shippingAddress);
+        $combined_order->save();
+
+
+        $product = Product::find($request->product_id);
         $order = new Order;
-        $order->combined_order_id = "1";
-        $order->user_id = $request->customer;
+        $order->combined_order_id = $combined_order->id;
+        // $order->shipping_address = json_encode($shippingAddress);
+        $order->shipping_address = '{"name":"Mr. Customer","email":"customer@example.com","address":"Japan","country":"Japan","state":"Aichi","city":"Anjo","postal_code":"1232","phone":"+200205151"}';
+        $order->user_id = $request->customer_id;
         $order->guest_id = "";
-        $order->seller_id = $request->seller;
+        $order->seller_id = $product->seller_id;
         $order->delivery_status = "pending";
         $order->payment_type = $request->payment_method;
-        $order->payment_status = $request->payment_status;
+        $order->grand_total = $product->unit_price * $request->quantity;;
+        $order->shipping_type = 'home_delivery';
+        $order->payment_status = 'pending';
         $order->code = date('Ymd-His') . rand(10, 99);
         $order->tracking_code = "";
         $order->date = strtotime('now');
@@ -72,22 +103,18 @@ class OrderController extends Controller
         $order->payment_status_viewed = "0";
         $order->save();
         
-        $product = Product::find($request->product_id);
-        // $or = Order::orderBy('id', 'desc')->first();
-        // $orders_id = $or->id;
         $order_detail = new OrderDetail;
-        // $order_detail->order_id = $orders_id;
-        $order_detail->seller_id = $product->user_id;
+        $order_detail->order_id = $order->id;
+        $order_detail->seller_id = $product->seller_id;
         $order_detail->product_id = $product->id;
         $order_detail->variation = $product->variations;
         $order_detail->price = $product->unit_price * $request->quantity;
-        // $order_detail->tax = $product->tax;
+        $order_detail->tax = $product->tax;
         $order_detail->tax = 0;
         $order_detail->shipping_cost = $product->shipping_cost;
-        // $order_detail->quantity = $request->quantity;
-        $order_detail->quantity = 1;
-        $order_detail->payment_status = $request->payment_status;
-        $order_detail->order_id = $order->id;
+        $order_detail->quantity = $request->quantity;
+        $order_detail->payment_status = 'pending';
+        $order_detail->shipping_type = 'home_delivery';
         $order_detail->save();
         // dd('order', $order, 'product', $product, 'order_detail', $order_detail);
 
