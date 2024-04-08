@@ -60,6 +60,7 @@ class OrderController extends Controller
         $address = Address::where('id', $request->customer_id)->first();
         $customer = User::find($request->customer_id)->first();
         
+        
 
         $shippingAddress = [];
         if ($address != null) {
