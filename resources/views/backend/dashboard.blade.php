@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
 
 @section('content')
-@if(auth()->user()->can('smtp_settings') && env('MAIL_USERNAME') == null && env('MAIL_PASSWORD') == null)
+{{-- @if(auth()->user()->can('smtp_settings') && env('MAIL_USERNAME') == null && env('MAIL_PASSWORD') == null)
     <div class="">
         <div class="alert alert-danger d-flex align-items-center">
             {{translate('Please Configure SMTP Setting to work all email sending functionality')}},
             <a class="alert-link ml-2" href="{{ route('smtp_settings.index') }}">{{ translate('Configure Now') }}</a>
         </div>
     </div>
-@endif
+@endif --}}
 @can('admin_dashboard')
 <div class="row gutters-10">
     <div class="col-lg-6">

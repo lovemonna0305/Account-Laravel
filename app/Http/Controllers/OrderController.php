@@ -57,7 +57,7 @@ class OrderController extends Controller
 
     public function new_order_store(Request $request)
     {
-        $address = Address::where('id', $request->customer_id)->first();
+        $address = Address::where('user_id', $request->customer_id)->first();
         $customer = User::find($request->customer_id)->first();
         
         
@@ -79,17 +79,18 @@ class OrderController extends Controller
 
         $combined_order = new CombinedOrder;
         $combined_order->user_id = $customer->id;
-        $combined_order->shipping_address = '{"name":"Mr. Customer","email":"customer@example.com","address":"Japan","country":"Japan","state":"Aichi","city":"Anjo","postal_code":"1232","phone":"+200205151"}';
-        // $combined_order->shipping_address = json_encode($shippingAddress);
+        // $combined_order->shipping_address = '{"name":"Mr. Customer","email":"customer@example.com","address":"Japan","country":"Japan","state":"Aichi","city":"Anjo","postal_code":"1232","phone":"+200205151"}';
+        $combined_order->shipping_address = json_encode($shippingAddress);
         $combined_order->save();
 
 
         $product = Product::find($request->product_id);
         $order = new Order;
         $order->combined_order_id = $combined_order->id;
-        // $order->shipping_address = json_encode($shippingAddress);
-        $order->shipping_address = '{"name":"Mr. Customer","email":"customer@example.com","address":"Japan","country":"Japan","state":"Aichi","city":"Anjo","postal_code":"1232","phone":"+200205151"}';
+        $order->shipping_address = json_encode($shippingAddress);
+        // $order->shipping_address = '{"name":"Mr. Customer","email":"customer@example.com","address":"Japan","country":"Japan","state":"Aichi","city":"Anjo","postal_code":"1232","phone":"+200205151"}';
         $order->user_id = $request->customer_id;
+        $order->seller_id = $product->user_id;
         $order->guest_id = "";
         $order->seller_id = $product->seller_id;
         $order->delivery_status = "pending";
