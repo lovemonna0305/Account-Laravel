@@ -3,12 +3,18 @@
 @section('content')
 
 <div class="aiz-titlebar text-left mt-2 mb-3">
-    <div class="align-items-center">
-        <h1 class="h3">{{translate('All Customers')}}</h1>
+    <div class="row align-items-center">
+        <div class="col-auto">
+            <h1 class="h3">{{translate('All Customers')}}</h1>
+        </div>
+        <div class="col text-right">
+            <a href="{{ route('add_new_customers.index') }}" class="btn btn-circle btn-info">
+                <span>{{translate('Add New Customers')}}</span>
+            </a>
+        </div>
     </div>
 </div>
-
-
+<br>
 <div class="card">
     <form class="" id="sort_customers" action="" method="GET">
         <div class="card-header row gutters-5">
