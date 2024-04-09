@@ -60,6 +60,15 @@ class InvoiceController extends Controller
         // }];
         // mpdf config will be used in 4th params of loadview
 
+        // $data = [
+        //     'title' => 'Sample PDF Title',
+        //     'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        // ];
+
+        // $pdf = PDF::loadView('pdf', $data);
+
+        // return $pdf->download('sample.pdf');
+
         $config = [];
 
         $order = Order::findOrFail($id);
