@@ -280,4 +280,9 @@ class SellerController extends Controller
         $shop->user->save();
         return back();
     }
+
+    public function add_new_sellers(Request $request)
+    {
+        return view('backend.sellers.add_seller');
+    }
 }
