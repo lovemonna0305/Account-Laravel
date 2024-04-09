@@ -8,7 +8,7 @@
             <h1 class="h3">{{translate('All Sellers')}}</h1>
         </div>
         <div class="col text-right">
-            <a href="{{ route('add_new_customers.index') }}" class="btn btn-circle btn-info">
+            <a href="{{ route('add_new_sellers.index') }}" class="btn btn-circle btn-info">
                 <span>{{translate('Add New Sellers')}}</span>
             </a>
         </div>
