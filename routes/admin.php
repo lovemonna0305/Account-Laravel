@@ -136,6 +136,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('sellers', SellerController::class);
     Route::controller(SellerController::class)->group(function () {
         Route::get('sellers/create', 'add_new_sellers')->name('add_new_sellers.index');
+        Route::post('sellers/add_sellers', 'sellers_save')->name('add_new_sellers');
 
         Route::get('sellers_ban/{id}', 'ban')->name('sellers.ban');
         Route::get('/sellers/destroy/{id}', 'destroy')->name('sellers.destroy');
