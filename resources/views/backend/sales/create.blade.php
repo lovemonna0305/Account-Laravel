@@ -24,7 +24,7 @@
     <form class="form form-horizontal mar-top" action="{{route('orders.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row gutters-5">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('Product Select')}}</h5>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('Customer Select')}}</h5>
