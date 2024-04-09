@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "8.2.12",
+        "php": "^7.4",
         "anandsiddharth/laravel-paytm-wallet": "^2.0.0",
         "authorizenet/authorizenet": "^2.0",
         "barryvdh/laravel-ide-helper": "^2.10",
