@@ -12,6 +12,8 @@ use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\EmailVerificationNotification;
 use Cache;
+use Illuminate\Support\Facades\Validator;
+
 
 class SellerController extends Controller
 {
@@ -24,6 +26,15 @@ class SellerController extends Controller
         $this->middleware(['permission:edit_seller'])->only('edit');
         $this->middleware(['permission:delete_seller'])->only('destroy');
         $this->middleware(['permission:ban_seller'])->only('ban');
+    }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'shop_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+        ]);
     }
 
     /**
@@ -284,5 +295,35 @@ class SellerController extends Controller
     public function add_new_sellers(Request $request)
     {
         return view('backend.sellers.add_seller');
+    }
+
+    public function sellers_save(Request $request)
+    {
+        if (User::where('email', $request->email)->first() != null) {
+            flash(translate('Email already exists!'))->error();
+            return back();
+        }
+        $this->validator($request->all())->validate();
+        $user = User::create([
+            'user_type' => 'seller',
+            'name' => $request->name,
+            'email' => $request->email,
+            'email_verified_at' => date("Y-m-d H:i:s"),
+        ]);
+        
+        $seller = new Seller;
+        $seller->user_id = $user->id;
+        if ($seller->save()) {
+            $shop = new Shop;
+            $shop->user_id = $user->id;
+            $shop->name = $request->shop_name;
+            $shop->address = $request->address;
+            $shop->slug = 'demo-shop-' . $user->id;
+            $shop->save();
+
+            flash(translate('Seller has been inserted successfully'))->success();
+            return redirect()->route('sellers.index');
+            // return back();
+        }
     }
 }

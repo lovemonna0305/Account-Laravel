@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="">
-    <form class="form form-horizontal mar-top" action="" method="POST" enctype="multipart/form-data" id="choice_form">
+    <form class="form form-horizontal mar-top" action="{{ route('add_new_sellers') }}" method="POST" enctype="multipart/form-data" id="choice_form">
         @csrf
         <div class="row gutters-5">
             <div class="col-lg-6">
@@ -73,10 +73,10 @@
         <div class="col-12">
             <div class="btn-toolbar float-right mb-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group mr-2" role="group" aria-label="Third group">
-                    <button id="cancel" name="button" value="unpublish" class="btn btn-primary action-btn">{{ translate('Cancel') }}</button>
+                    <button id="cancel" class="btn btn-primary action-btn">{{ translate('Cancel') }}</button>
                 </div>
                 <div class="btn-group" role="group" aria-label="Second group">
-                    <button type="submit" name="button" value="publish" class="btn btn-success action-btn">{{ translate('Save') }}</button>
+                    <button type="submit" class="btn btn-success action-btn">{{ translate('Save') }}</button>
                 </div>
             </div>
         </div>
